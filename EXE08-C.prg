@@ -25,9 +25,9 @@ do while .t.
    nTotal     := 0
    cEndereco  := space(40)
 
-   nAlerta  := 0
+   nAlerta   := 0
    nAlerta1  := 0
-   nNumero := 1
+   nNumero   := 1
    //escrita info
    /*@ 01,01 say "Nome:"
    @ 02,01 say "Idade:"
@@ -45,7 +45,12 @@ do while .t.
    @ 06,01 say AllTrim(Str(nNumero++))
    @ 07,01 say AllTrim(Str(nNumero++))
    @ 08,01 say AllTrim(Str(nNumero++))
-
+   if LastKey() == 27
+      nAlerta1:= alert('deseja sair?', {'sim','nao'})
+      if nAlerta1 = 1
+         exit
+      endif
+   endif
    do while .t.
       //produto A
       @ 06,06 get cProdutoA      Picture "@!"      valid !Empty(cProdutoA)
@@ -54,7 +59,7 @@ do while .t.
       read
 
       if LastKey() == 27
-         nAlerta:= alert('terminar compra', {'cancelar','finalizar'})
+         nAlerta := alert('terminar compra', {'cancelar','finalizar'})
          if nAlerta = 1
             loop
          elseif nAlerta = 2
@@ -63,14 +68,14 @@ do while .t.
       endif
 
       nTotal+= (nProdutoQA * nPrecoProdutoA)
-      @ 09,01 say "Total:" + Transform(nTotal,"@e 9999.99") 
+      @ 09,01 say "Total:" +   Transform(nTotal,"@e 9999.99") 
       if nSaldo > nTotal
          cCor := "g/n"
       elseif nSaldo < nTotal
          cCor := "r/n"
       endif
-      @ 09,20 say 'Saldo: RS' + Transform(nSaldo-nTotal,"@e 99999.99") color cCor
-      @ 06,51 say 'RS' +        Transform(nProdutoQA*nPrecoProdutoA, "@e 999.99")
+      @ 09,20 say 'Saldo: RS' +Transform(nSaldo-nTotal,"@e 99999.99") color cCor
+      @ 06,51 say 'RS' +       Transform(nProdutoQA*nPrecoProdutoA, "@e 999.99")
 
       //produto B
       @ 07,06 get cProdutoB      Picture "@!"      valid !Empty(cProdutoB)
@@ -88,14 +93,14 @@ do while .t.
       endif
 
       nTotal+= (nProdutoQB*nPrecoProdutoB)
-      @ 09,01 say "Total:" + Transform(nTotal,"@e 9999.99")
+      @ 09,01 say "Total:" +   Transform(nTotal,"@e 9999.99")
       if nSaldo > nTotal
          cCor2 := "g/n"
       elseif nSaldo < nTotal
          cCor2 := "r/n"
       endif
-      @ 09,20 say 'Saldo: RS' + Transform(nSaldo-nTotal,"@e 99999.99") color cCor2
-      @ 07,51 say 'RS' + Transform(nProdutoQB*nPrecoProdutoB, "@e 999.99")
+      @ 09,20 say 'Saldo: RS' +Transform(nSaldo-nTotal,"@e 99999.99") color cCor2
+      @ 07,51 say 'RS' +       Transform(nProdutoQB*nPrecoProdutoB, "@e 999.99")
 
 
       //Produto C
@@ -114,25 +119,26 @@ do while .t.
       endif
 
       nTotal+= (nProdutoQC*nPrecoProdutoC)
-      @ 09,01 say "Total:" + Transform(nTotal,"@e 9999.99")
+      @ 09,01 say "Total:" +   Transform(nTotal,"@e 9999.99")
       if nSaldo > nTotal
          cCor3:="g/n"
       elseif nSaldo < nTotal
          cCor3:="r/n"
       endif
-      @ 09,20 say 'Saldo: RS' + Transform(nSaldo-nTotal,"@e 99999.99") color cCor3
-      @08,51 say 'RS' + Transform(nProdutoQC*nPrecoProdutoC, "@e 999.99")
+      @ 09,20 say 'Saldo: RS' +Transform(nSaldo-nTotal,"@e 99999.99") color cCor3
+      @08,51 say 'RS' +        Transform(nProdutoQC*nPrecoProdutoC, "@e 999.99")
 
       @ 06,01 say AllTrim(Str(nNumero++))
       @ 07,01 say AllTrim(Str(nNumero++))
       @ 08,01 say AllTrim(Str(nNumero++))
    end do   
-
-
-
-
-
    //cupom
+   if LastKey() == 27
+      nAlerta1:= alert('deseja sair?', {'sim','nao'})
+      if nAlerta1 = 1
+         exit
+      endif
+   endif
 clear
 
    @ 11,01 say "TOTAL: RS" + Transform(nTotal, "@e 9999.99")
