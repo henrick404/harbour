@@ -3,7 +3,7 @@ set epoch to 1940
 set date british
 clear
 
-nLinha        :=1
+nLinha        := 1
 cProdutoNomeA := Space(10)
 cProdutoNomeB := Space(10)
 cProdutoNomeC := Space(10)
@@ -26,20 +26,20 @@ nTaxaEntrega  :=6
 
 @ nLinha++,01 say "Nome:"
 @ nLinha++,01 say "Data de nascimento:"
-@ nLinha++,01 say "Endere‡o:"
+@ nLinha++,01 say "Endereâ€¡o:"
 @ nLinha++,01 say "Porcentagem de desconto: "
 @ nLinha++,01 say "Data de entrega:"
 
 nLinha        :=1
 @ nLinha++,25 get cNomeCliente     picture "@!"        valid !empty(cNomeCliente)
-@ nLinha++,25 get dNascimento                       valid !Empty(dNascimento)
+@ nLinha++,25 get dNascimento                          valid !Empty(dNascimento)
 @ nLinha++,25 get cEndereco        picture "@!"        valid !empty(cEndereco)
 @ nLinha++,25 get nDesconto        picture "999%"      valid nDesconto>=0
 @ nLinha++,25 get dEntrega         picture "@!"        valid dEntrega >= dVenda+5 .and. !empty(dEntrega)
 read
 
 clear
-@ 01,01       say "PRODUTO   |PRE€O  |QTD   |TOTAL"
+@ 01,01       say "PRODUTO   |PREâ‚¬O  |QTD   |TOTAL"
 @ 02,01       say "          |       |      |"
 @ 03,01       say "          |       |      |"
 @ 04,01       say "          |       |      |"
@@ -107,6 +107,7 @@ nTotalCorrigido :=( nTotal-nTotalDescontado)+nTaxaEntrega
 @ nLinha++,01 say "Data de compra:"
 @ nLinha,01   say "Data de entrega:"
 @ nLinha++,18 say dEntrega
-@ nLinha,01   say "Sera entregue no endere‡o:"
+@ nLinha,01   say "Sera entregue no endereâ€¡o:"
 @ nLinha++,27 say cEndereco
 inkey(0)
+
